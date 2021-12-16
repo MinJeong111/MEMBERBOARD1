@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jmj.memberboard.dao.MDAO">
+
+    <insert id="mJoin" parameterType="member">
+        INSERT INTO BMEMBER VALUES(#{mId}, #{mPw}, #{mName}, #{mAge}, #{mBirth}, #{mPhone}, #{mAddress}, #{mProfileName})
+    </insert>
+
+    <select id="mLogin" parameterType="member" resultType="member">
+        SELECT * FROM BMEMBER WHERE MID=#{mId} AND MPW=#{mPw}
+    </select>
+
+    <select id="mList" resultType="member">
+        SELECT * FROM BMEMBER
+    </select>
+
+    <select id="mView" parameterType="String" resultType="member">
+        SELECT * FROM BMEMBER WHERE MID=#{mId}
+    </select>
+
+    <update id="mModify" parameterType="member">
+        UPDATE BMEMBER SET MPW=#{mPw}, MNAME=#{mName}, MAGE=#{mAge}, MBIRTH=#{mBirth}, MPHONE=#{mPhone}, MADDRESS=#{mAddress}, MPROFILENAME=#{mProfileName} WHERE MID=#{mId}
+    </update>
+
+    <delete id="mDelete" parameterType="String">
+        DELETE FROM BMEMBER WHERE MID=#{mId}
+    </delete>
+
+    <select id="idOverlap" parameterType="String" resultType="String">
+        SELECT MID FROM BMEMBER WHERE MID=#{mId}
+    </select>
+
+</mapper>

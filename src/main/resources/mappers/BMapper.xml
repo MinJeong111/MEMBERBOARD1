@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jmj.memberboard.dao.BDAO">
+
+    <insert id="bWrite" parameterType="board">
+        INSERT INTO BBOARD VALUES(BTB_SEQ.NEXTVAL, #{bWriter}, #{bTitle}, #{bContent}, SYSDATE, 0, #{bFileName})
+    </insert>
+
+    <select id="bList" resultType="board">
+        SELECT * FROM BBOARD ORDER BY BNO DESC
+    </select>
+
+    <update id="bCount" parameterType="int">
+        UPDATE BBOARD SET BHIT = BHIT+1 WHERE BNO=#{bNo}
+    </update>
+
+    <select id="bView" parameterType="int" resultType="board">
+        SELECT * FROM BBOARD WHERE BNO=#{bNo}
+    </select>
+
+    <update id="bModify" parameterType="board">
+        UPDATE BBOARD SET BWRITER=#{bWriter}, BTITLE=#{bTitle}, BCONTENT=#{bContent}, BFILENAME=#{bFileName} WHERE BNO=#{bNo}
+    </update>
+
+    <delete id="bDelete" parameterType="int">
+        DELETE FROM BBOARD WHERE BNO=#{bNo}
+    </delete>
+
+</mapper>

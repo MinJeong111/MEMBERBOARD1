@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | User Profile</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index" class="brand-link">
+      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">ICIA_MemberBoard</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img th:if="${session.loginId ne null}" th:src="@{/profile/{mProfileName}(mProfileName=${session.loginProfile})}" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
+        </div>
+        <div class="info">
+          <a th:text="${session.loginId}"></a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-header">MEMBER</li>
+          <li class="nav-item">
+            <a href="joinForm" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                회원가입
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="loginForm" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                로그인
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="mList" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                회원목록
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a th:href="@{mView(mId=${session.loginId})}" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                내정보보기
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="logout" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                로그아웃
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-header">BOARD</li>
+          <li class="nav-item">
+            <a href="writeForm" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                글쓰기
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="bList" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                글목록
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a th:href="@{bView(bNo=42)}" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                게시글보기
+              </p>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>환영합니다</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                <a th:if="${session.loginId eq null}" href="joinForm" class="btn btn-info">회원가입</a>
+                <a th:if="${session.loginId eq null}" href="loginForm" class="btn btn-info">로그인</a>
+
+                <a href="mList" class="btn btn-info">회원목록</a>
+                <a href="bList" class="btn btn-info">게시글목록</a>
+
+                <a th:if="${session.loginId ne null}" href="writeForm" class="btn btn-info">글작성</a>
+                <a th:if="${session.loginId ne null}" href="logout" class="btn btn-info">로그아웃</a>
+
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+
+                    <!-- Post -->
+                    <div class="post">
+
+                      <div class="row mb-3">
+                        <div class="col-sm-6">
+                          <img class="img-fluid" src="../../dist/img/vincent.JPG" alt="Photo">
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <img class="img-fluid mb-3" src="../../dist/img/earings.JPG" alt="Photo">
+                              <img class="img-fluid" src="../../dist/img/vin_flower.JPG" alt="Photo">
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-6">
+                              <img class="img-fluid mb-3" src="../../dist/img/vin_street.JPG" alt="Photo">
+                              <img class="img-fluid" src="../../dist/img/monariza.JPG" alt="Photo">
+                            </div>
+                            <!-- /.col -->
+                          </div>
+                          <!-- /.row -->
+                        </div>
+                        <!-- /.col -->
+                      </div>
+                      <!-- /.row -->
+
+                    </div>
+                    <!-- /.post -->
+                  </div>
+
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- footer -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.1.0
+    </div>
+    <strong>JMJ &copy; 2021 <a href="http://www.icia.co.kr">ICIA</a></strong>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="jmj" />
+    <meta name="description" content="Member프로젝트 회원 상세보기" />
+    <title>Member_회원 상세보기</title>
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
+</head>
+<body>
+<table>
+    <caption>회원 상세보기</caption>
+    <tr>
+        <th>아이디</th>
+        <td th:text="${member.mId}"></td>
+    </tr>
+
+    <tr>
+        <th>비밀번호</th>
+        <td th:text="${member.mPw}"></td>
+    </tr>
+
+    <tr>
+        <th>이름</th>
+        <td th:text="${member.mName}"></td>
+    </tr>
+
+    <tr>
+        <th>나이</th>
+        <td th:text="${member.mAge}"></td>
+    </tr>
+
+    <tr>
+        <th>생일</th>
+        <td th:text="${member.mBirth}"></td>
+    </tr>
+
+    <tr>
+        <th>전화번호</th>
+        <td th:text="${member.mPhone}"></td>
+    </tr>
+
+    <tr>
+        <th>주소</th>
+        <td th:text="${member.mAddress}"></td>
+    </tr>
+
+    <tr>
+        <th>사진</th>
+        <td><img th:src="@{/profile/{mProfileName}(mProfileName=${member.mProfileName})}" width="200px"/></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

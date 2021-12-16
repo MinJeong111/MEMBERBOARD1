@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>MEMBERBOARD 프로젝트</h1>
+
+<button th:if="${session.loginId eq null}" onclick="location.href='joinForm'">회원가입</button>
+<button th:if="${session.loginId eq null}" onclick="location.href='loginForm'">로그인</button>
+
+<button onclick="location.href='mList'">회원목록</button>
+<button onclick="location.href='bList'">글목록보기</button>
+
+<button th:if="${session.loginId ne null}" onclick="location.href='writeForm'">글작성</button>
+<button th:if="${session.loginId ne null}" onclick="location.href='logout'">로그아웃</button>
+<p th:if="${session.loginId ne null}" th:text="${session.loginId} + '님 로그인'"></p>
+</body>
+</html>

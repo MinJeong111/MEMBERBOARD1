@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Board_게시글수정</title>
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
+</head>
+<body>
+<form action="bModify" method="POST" enctype="multipart/form-data">
+    <table>
+        <caption>게시글 수정</caption>
+        <input type="hidden" name="bNo" th:value="${board.bNo}">
+        <input type="hidden" th:name="bWriter" th:value="${session.loginId}">
+
+        <tr>
+            <th>제목</th>
+            <td><input type="text" name="bTitle" th:placeholder="${board.bTitle}"></td>
+        </tr>
+
+        <tr>
+            <th>내용</th>
+            <td><textarea rows="20" cols="40" name="bContent" th:placeholder="${board.bContent}"></textarea></td>
+        </tr>
+
+        <tr>
+            <th>첨부파일</th>
+            <td>
+                <img th:src="@{/upload/{bFileName}(bFileName=${board.bFileName})}" width="200px">
+                <br/><input type="file" name="bFile">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><input type="submit" value="수정"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

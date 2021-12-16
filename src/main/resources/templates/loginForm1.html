@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="jmj"/>
+    <meta name="description" content="Member프로젝트 로그인 페이지">
+    <title>Member_로그인</title>
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
+</head>
+
+<body>
+
+<!-- 정렬 : [Ctrl] + [Alt] + [L] -->
+
+<form action="mLogin" method="POST">
+    <table>
+        <caption>로그인</caption>
+
+        <tr>
+            <th>아이디</th>
+            <td><input type="text" name="mId"/></td>
+        </tr>
+
+        <tr>
+            <th>패스워드</th>
+            <td><input type="password" name="mPw"/></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><input type="submit" value="로그인"></td>
+        </tr>
+
+    </table>
+</form>
+
+</body>
+
+</html>

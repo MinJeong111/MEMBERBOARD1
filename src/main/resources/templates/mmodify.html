@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="jmj"/>
+    <meta name="description" content="Member 회원수정 페이지">
+    <title>Member_회원수정</title>
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
+</head>
+
+<body>
+
+<!-- 정렬 : [Ctrl] + [Alt] + [L] -->
+
+<form action="mModify" method="POST" enctype="multipart/form-data">
+    <table>
+        <caption>회원수정</caption>
+
+        <tr>
+            <th>아이디</th>
+            <td><input type="hidden" name="mId" th:text="${member.mId}" th:value="${member.mId}"/></td>
+        </tr>
+
+        <tr>
+            <th>패스워드</th>
+            <td><input type="password" name="mPw"/></td>
+        </tr>
+
+        <tr>
+            <th>이름</th>
+            <td><input type="text" name="mName" th:placeholder="${member.mName}"/></td>
+        </tr>
+
+        <tr>
+            <th>나이</th>
+            <td><input type="text" name="mAge" th:placeholder="${member.mAge}"/></td>
+        </tr>
+
+        <tr>
+            <th>생일</th>
+            <td><input type="date" name="mBirth" th:placeholder="${member.mBirth}"/></td>
+        </tr>
+
+        <tr>
+            <th>전화번호</th>
+            <td><input type="text" name="mPhone" th:placeholder="${member.mPhone}"/></td>
+        </tr>
+
+        <tr>
+            <th>주소</th>
+            <td><input type="text" name="mAddress" th:placeholder="${member.mAddress}"/></td>
+        </tr>
+
+        <tr>
+            <th>사진</th>
+            <td><input type="file" name="mProfile"/></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><input type="submit" value="수정"></td>
+        </tr>
+
+    </table>
+</form>
+
+</body>
+
+</html>
